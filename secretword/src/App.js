@@ -21,18 +21,51 @@ function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
   const [words] = useState(wordsList);
 
+  const [pickedWord, setPickedWord] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
+  const [letters, setLetters] = useState([]);
+
+  const pickWordAndCategory = () => {
+    // Pick random category
+    const categories = Object.keys(words);
+    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)];
+
+    console.log(category);
+    // Pick random word
+    const word = words[category][Math.floor(Math.random() * words[category].length)];
+    console.log(word);
+
+    // Retorna como obj, já que está sendo desestruturado como objeto(abaixo)
+    return { word, category };
+  }
+
   // Starts the secret word game  
   const startGame = () => {
+    // Pick word and pick category
+    // Desestrutura o retorno da função 
+    const { word, category } = pickWordAndCategory();
+
+    // Create an array of letters 
+    // Retorna um array 
+    let wordLetters = word.split("");
+    wordLetters = wordLetters.map((l) => l.toLowerCase());
+
+    // fill states 
+    setPickedWord(word);
+    setPickedCategory(category);
+    setLetters(letters);
+
+    // Primeiro deve estar tudo pronto, antes de iniciar o game;
     setGameStage(stages[1].name);
   };
 
   // Process the letter input 
-  const verifyLetter = ()=>{
+  const verifyLetter = () => {
     setGameStage(stages[2].name);
   };
-  
-  // Restarts the game 
-  const retry = ()=> {
+
+  // Restarts the game  
+  const retry = () => {
     setGameStage(stages[0].name);
   };
 
