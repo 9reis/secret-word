@@ -3,7 +3,7 @@ import "./Game.css";
 const Game = ({ verifyLetter }) => {
   return (
     <div className="game">
-      <p className="pints">
+      <p className="points">
         <span>Pontuação: 000</span>
       </p>
 
@@ -14,10 +14,10 @@ const Game = ({ verifyLetter }) => {
 
       <div className="wordContainer">
         <span className="letter">A</span>
-        <span className="blankSquase"></span>
+        <span className="blankSquare"> </span>
       </div>
       <div className="letterContainer">
-        <p>Teste advinhar uma letra da palavra: </p>
+        <p>Tente advinhar uma letra da palavra: </p>
         <form>
           <input type="text" name="letter" maxLength="1" required />
           <button> Jogar </button>
