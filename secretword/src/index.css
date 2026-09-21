@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+  /* Deixa autura 100% da tela  
+    • Terá a altura toda ocupada */
+}
+
+body {
+  font-family: Helvetica;
+  margin: 0;
+  /* Zera a margin e padding*/
+  padding: 0;
+  background: linear-gradient(
+      /*Seta o gradiente */
+      180deg,
+      /* Gradiente de cima para baixo*/
+      rgba(9, 35, 175, 1) 0%,
+      rgba(0, 0, 0, 1)100%);
+  color: #fff;
+  /* COr do texto*/
+}
