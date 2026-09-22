@@ -66,8 +66,35 @@ function App() {
 
   // Process the letter input 
   const verifyLetter = (letter) => {
-    console.log(letter);
+    const normalizedLetter = letter.toLowerCase();
+
+    // Check if letter has already been utilized
+    if (guessedLetters.includes(normalizedLetter) ||
+      wrongLetters.includes(normalizedLetter)) {
+      // Retorna para evitar perder uma chance caso envie a letra novamentepointe
+      return;
+    }
+
+    // push guessed letter or remove a guess 
+    if (letters.includes(normalizedLetter)) {
+      // Se a letra está correta 
+      setGuessedLetters((actualGuessedLetters) => [
+        // Adiciona a nova letra as letras que fazem parte da "palavra" 
+        ...actualGuessedLetters,
+        normalizedLetter
+      ])
+      // Se a letra está incorreta
+    } else {
+      // Add a nova letra a lista de letras erradas 
+      // Spread operator -> pega todos os itens atuais e adiciona os novos. 
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter
+      ])
+    }
   };
+  console.log(guessedLetters);
+  console.log(wrongLetters);
 
   // Restarts the game  
   const retry = () => {
@@ -84,4 +111,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
